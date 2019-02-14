@@ -15,7 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from ip2app import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^index/', views.Index),
+    url(r'^about/', views.About),
+    url(r'^signinregister',views.SignInRegister),
+    url(r'^profile', views.Profile),
+    url(r'^scoreboard', views.ScoreBoard),
+    url(r'^quiz',views.Quiz),
 ]
