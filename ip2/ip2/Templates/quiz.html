@@ -29,12 +29,12 @@
   <div class="container">
     <div class="section">
 
-    
+
       <div class="row">
         {%if quizzes%}
           <ul>
             {% for quiz in quizzes%}
-              <li> {{quiz.quiz_name}} </li>
+              <li> {{quiz.quiz_name}} , {{quiz.url_slug}} </li>
               {%endfor%}
           </ul>
         {%else%}
@@ -42,6 +42,16 @@
         {%endif%}
 
       </div>
+      <div class="row">
+        {%if questionQuiz%}
+        <h1> {{questionQuiz.url_slug}} /h1>
+          {%if questionItem %}
+            {% for question in questionItem %}
+              {{question.question_text}}
+            {%endfor%}
+          {%endif%}
+        {%endif%}
+        <div>
 
     </div>
     <br><br>

@@ -10,7 +10,7 @@ from .models import QuizObject, Question
 
 
 # Create your views here.
-from.models import QuizObject,Question
+
 def Index(View):
     info = 'bla bla bla'
     context_dict = {'boldmsg': "i am a bold message"}
@@ -28,7 +28,24 @@ def Profile(View):
 def ScoreBoard(View):
     return HttpResponse("example scoreboard")
 
-def Quiz(request):
+def QuizPage(request):
     quiz_list = QuizObject.objects.order_by('quiz_name')
     context_dict = {'quizzes': quiz_list}
+    return render(request,'quiz.html',context_dict)
+
+#@TODO: fix this so that it shows info. Also, should not be showing
+#       anything if i query a url slug that doesn't match to the
+#       corresponding URL slug in the models record... idk why this is
+#       rendering... probably to do with a doesNotExist exception in
+#       views.py
+def QuestionItem(request, url_slug):
+    context_dict = {}
+    try:
+        questionQuiz = Question.objects.get(url_slug = url_slug)
+        context_dict['questionQuiz'] = questionQuiz
+
+        questionItem = Question.objects.filter(quiz=questionQuiz)
+        context_dict['questionItem'] = QuestionItem
+    except Question.DoesNotExist or QuizObject.DoesNotExist:
+        pass
     return render(request,'quiz.html',context_dict)
