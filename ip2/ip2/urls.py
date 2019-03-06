@@ -25,4 +25,5 @@ urlpatterns = [
     url(r'^profile', views.Profile),
     url(r'^scoreboard', views.ScoreBoard),
     url(r'^quiz',views.Quiz),
+    # url(r'^quiz/(?P<url_slug>[\w\-]+)/$', views.Quiz, name='quiz'),
 ]

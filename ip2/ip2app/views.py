@@ -6,9 +6,11 @@ from django.template import RequestContext
 
 from django.http import HttpResponse
 from django.views import View
+from .models import QuizObject, Question
 
 
 # Create your views here.
+from.models import QuizObject,Question
 def Index(View):
     info = 'bla bla bla'
     context_dict = {'boldmsg': "i am a bold message"}
@@ -26,5 +28,7 @@ def Profile(View):
 def ScoreBoard(View):
     return HttpResponse("example scoreboard")
 
-def Quiz(View):
-    return HttpResponse("quiz page")
+def Quiz(request):
+    quiz_list = QuizObject.objects.order_by('quiz_name')
+    context_dict = {'quizzes': quiz_list}
+    return render(request,'quiz.html',context_dict)

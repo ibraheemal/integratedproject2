@@ -58,6 +58,18 @@
           </div>
         </div>
       </div>
+      <div class="row">
+        {%if quizs%}
+          <ul>
+            {% for quiz in quizs%}
+              <li> {{quiz.quiz_name}} </li>
+              {%endfor%}
+          </ul>
+        {%else%}
+        <strong> No Quiz items have been made yet. :( </strong>
+        {%endif%}
+
+      </div>
 
     </div>
     <br><br>

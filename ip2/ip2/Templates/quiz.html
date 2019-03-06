@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{%extends "base.html"%}
+{%load staticfiles%}
+
+{%block bodyblock %}
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+
+  <title>Index</title>
+</head>
+<body>
+
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h1 class="header center blue-text darken-1">Section A</h1>
+      <div class="row center">
+        <h5 class="header col s12 light">Imported Materialize For Quick Front End Development</h5>
+      </div>
+
+      <br><br>
+
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="section">
+
+    
+      <div class="row">
+        {%if quizzes%}
+          <ul>
+            {% for quiz in quizzes%}
+              <li> {{quiz.quiz_name}} </li>
+              {%endfor%}
+          </ul>
+        {%else%}
+        <strong> No Quiz items have been made yet. :( </strong>
+        {%endif%}
+
+      </div>
+
+    </div>
+    <br><br>
+  </div>
+
+
+
+
+  <!--  Scripts-->
+  <script src="{%static 'js/materialize.js'%}"></script>
+
+
+  </body>
+{%endblock%}
+</html>
