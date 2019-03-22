@@ -24,6 +24,5 @@ urlpatterns = [
     url(r'^signinregister/',views.SignInRegister),
     url(r'^profile/', views.Profile),
     url(r'^scoreboard/', views.ScoreBoard),
-    url(r'^quiz/',views.QuizPage),
-    url(r'^quiz/(?P<url_slug>[\w\-]+)/$', views.QuestionItem, name='QuestionItem'),
+    url(r'^quiz/(?P<slug>[\w\-]+)/$', views.QuizPage, name='Quiz'),
 ]

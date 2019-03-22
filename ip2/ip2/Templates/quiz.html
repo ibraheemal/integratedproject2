@@ -8,14 +8,33 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
 
-  <title>Index</title>
+  <title>Quiz</title>
 </head>
 <body>
 
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
       <br><br>
-      <h1 class="header center blue-text darken-1">Section A</h1>
+      <h1 class="header center blue-text darken-1">Quiz Page</h1>
+      <div class="row">
+      {%if quizzes %}
+      <ul>
+        {%for quiz in quizzes %}
+
+          {{quiz}}
+          {%endfor%}
+          {%endif%}
+          {%if qs%}
+          <ul>
+            {%for q in qs%}
+            <li>
+            {{q}}<br>
+          </li>
+            {%endfor%}
+          {%endif%}
+        </ul>
+
+    </div>
       <div class="row center">
         <h5 class="header col s12 light">Imported Materialize For Quick Front End Development</h5>
       </div>

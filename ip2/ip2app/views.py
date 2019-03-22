@@ -28,9 +28,13 @@ def Profile(View):
 def ScoreBoard(View):
     return HttpResponse("example scoreboard")
 
-def QuizPage(request):
-    quiz_list = QuizObject.objects.order_by('quiz_name')
-    context_dict = {'quizzes': quiz_list}
+def QuizPage(request,slug):
+    try:
+        quiz_list = QuizObject.objects.get(slug=slug)
+        questions = Question.objects.filter(quiz=quiz_list)
+        context_dict = {'quizzes': quiz_list.quiz_name, 'qs':questions}
+    except QuizObject.DoesNotExist:
+        pass
     return render(request,'quiz.html',context_dict)
 
 #@TODO: fix this so that it shows info. Also, should not be showing
