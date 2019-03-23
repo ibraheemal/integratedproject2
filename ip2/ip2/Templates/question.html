@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{%extends "base.html"%}
+{%load staticfiles%}
+
+{%block bodyblock %}
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+
+  {%if quizzes %}
+  <title>{{quizzes.quiz_name}}</title>
+  {%else%}
+  <title> 404 - Quiz Not Found </title>
+  {%endif%}
+</head>
+<body>
+
+    {%if questions %}
+    {%for question in questions%}
+
+      <div class="container">
+        <div class="section">
+      <div class="row">
+      <h1 class="header center blue-text darken-1"> {{question.id}}</h1>
+      <br>
+      {{question.question_text}}
+    </div>
+{%endfor%}
+    {%endif%}
+
+
+
+        <div>
+
+    </div>
+    <br><br>
+  </div>
+</div>
+
+
+
+
+  <!--  Scripts-->
+  <script src="{%static 'js/materialize.js'%}"></script>
+
+
+  </body>
+{%endblock%}
+</html>

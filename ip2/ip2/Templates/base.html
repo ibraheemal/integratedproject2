@@ -5,25 +5,32 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <link href= "{%static 'css/materialize.css'%}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href= "{%static 'css/ibraheemcss.css'%}" type="text/css" rel="stylesheet" media="screen,projection"/>
 
 </head>
 <body>
 <!-- navagaton bar -->
 <nav class="light-blue lighten-1" role="navigation">
-  <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">RUSmarterThanAGUStudent?</a>
+  <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo hide-on-med-and-down">RUSmarterThanAGUStudent?</a>
+         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     <ul class="right hide-on-med-and-down">
       <li><a href="#">Sign Up / Register</a></li>
     </ul>
 
-    <ul id="nav-mobile" class="sidenav">
-      <li><a href="#">About Us</a></li>
-    </ul>
-    <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">Profile Stuff To Go Here...</i></a>
   </div>
 </nav>
+<!-- @TODO: fix this infernal javascript  -->
+
+<ul class="sidenav" id="mobile-demo">
+<li><a href="sass.html">Sass</a></li>
+<li><a href="badges.html">Components</a></li>
+<li><a href="collapsible.html">Javascript</a></li>
+<li><a href="mobile.html">Mobile</a></li>
+</ul>
+<main>
    {%block bodyblock%}
    {%endblock%}
-
+</main>
    <footer class="page-footer blue">
      <div class="container">
        <div class="row">
@@ -62,5 +69,12 @@
 
      <script src="{%static 'js/materialize.js'%}"></script>
       <script src="{%static 'js/jquery1.4.1.js'%}"></script>
+<!-- @TODO: fix this infernal javascript
+      <script>
+  $(document).ready(function(){
+    $('.sidenav').sidenav();
+  });
+  </script>
+-->
 </body>
 </html>
