@@ -3,10 +3,11 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render,render_to_response
 from django.template import RequestContext
-
+from django.views.generic import TemplateView
 from django.http import HttpResponse
 from django.views import View
 from .models import QuizObject, Question
+from .forms import QuestionForm
 
 
 # Create your views here.
@@ -38,13 +39,23 @@ def QuizPage(request,slug):
         pass
     return render(request,'quiz.html',context_dict)
 
-def QuestionItem(request,slug,pk):
-    try:
-        context_dict={}
-        quizzes = QuizObject.objects.get(slug=slug)
-        questions = Question.objects.filter(id=pk)
-        context_dict = {'questions': questions, 'quizzes':quizzes}
-    except Question.DoesNotExist:
-        pass
+class QuestionItem(TemplateView):
+    def get(self,request,slug,pk,*args,**kwargs):
 
-    return render(request,'question.html',context_dict)
+        try:
+            form = QuestionForm()
+            template_name = "question.html"
+            quizzes = QuizObject.objects.get(slug=slug)
+            questions = Question.objects.filter(id=pk)
+
+            context_dict = {'form':form,'questions': questions, 'quizzes':quizzes,}
+
+        except Question.DoesNotExist:
+            pass
+        return render(request,'question.html',context=context_dict)
+
+    def post(self,request,slug,pk,*args,**kwargs):
+        form = QuestionForm()
+        if form.is_valid():
+            form.save(commit=True)
+        return render(request,'question.html',)

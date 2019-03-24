@@ -20,9 +20,9 @@ class QuizObject(models.Model):
 class Question(models.Model):
     quiz = models.ForeignKey(QuizObject, on_delete=models.CASCADE)
     question_text = models.CharField(max_length=200)
-    question_answer = models.CharField(max_length=200, blank=True)
+    question_answer = models.CharField(max_length=200)
+    user_response = models.CharField(max_length=200, blank=True)
     def save(self,*args,**kwargs):
-
         super(Question,self).save(*args,**kwargs)
     def __str__(self):
         return self.question_text

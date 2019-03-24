@@ -21,60 +21,30 @@
       <ul>
         {%for quiz in quizzes %}
 
-          {{quiz}}
+          {{quiz.quiz_name}}
           {%endfor%}
           {%endif%}
           {%if qs%}
           <ul>
             {%for q in qs%}
             <li>
-            {{q}}<br>
+        <a href = "{{q.pk}}"> Question: {{q.pk}} </a><br>
           </li>
             {%endfor%}
           {%endif%}
+
+
         </ul>
 
     </div>
-      <div class="row center">
-        <h5 class="header col s12 light">Imported Materialize For Quick Front End Development</h5>
-      </div>
 
-      <br><br>
+
 
     </div>
   </div>
 
 
-  <div class="container">
-    <div class="section">
 
-
-      <div class="row">
-        {%if quizzes%}
-          <ul>
-            {% for quiz in quizzes%}
-              <li> {{quiz.quiz_name}} , {{quiz.url_slug}} </li>
-              {%endfor%}
-          </ul>
-        {%else%}
-        <strong> No Quiz items have been made yet. :( </strong>
-        {%endif%}
-
-      </div>
-      <div class="row">
-        {%if questionQuiz%}
-        <h1> {{questionQuiz.url_slug}} /h1>
-          {%if questionItem %}
-            {% for question in questionItem %}
-              {{question.question_text}}
-            {%endfor%}
-          {%endif%}
-        {%endif%}
-        <div>
-
-    </div>
-    <br><br>
-  </div>
 
 
 

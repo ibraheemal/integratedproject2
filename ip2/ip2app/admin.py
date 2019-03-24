@@ -7,7 +7,7 @@ from models import QuizObject,Question,RegularUser,UserQuiz
 class QuizObjectAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug':('quiz_name',)}
 class QuestionAdmin(admin.ModelAdmin):
-     readonly_fields = ('id',)
+     readonly_fields = ('id','user_response')
 admin.site.register(QuizObject,QuizObjectAdmin)
 admin.site.register(UserQuiz)
 admin.site.register(Question,QuestionAdmin)

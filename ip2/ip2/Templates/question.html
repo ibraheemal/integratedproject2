@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 {%extends "base.html"%}
 {%load staticfiles%}
-
 {%block bodyblock %}
 <html lang="en">
 <head>
@@ -22,9 +21,15 @@
       <div class="container">
         <div class="section">
       <div class="row">
-      <h1 class="header center blue-text darken-1"> {{question.id}}</h1>
+      <h3 class="header center blue-text darken-1"> Question: {{question.id}}</h1>
       <br>
-      {{question.question_text}}
+      {{question.question_text}} ?
+      <form id="QuestionForm" method="post" action="#">
+      {%csrf_token%}
+      {{form.as_p}}
+      <input type="submit" name="submit" value= "Submit Answer"/>
+      <input type="reset" name="reset" value="reset"/>
+    </form>
     </div>
 {%endfor%}
     {%endif%}
